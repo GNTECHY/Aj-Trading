@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Floating WhatsApp Button Injection
     const waBtn = document.createElement('a');
-    waBtn.href = "https://wa.me/919746577883";
+    waBtn.href = "https://wa.me/919947932323";
     waBtn.target = "_blank";
     waBtn.className = "floating-wa-btn fade-in-up";
     waBtn.style.animationDelay = "1s"; // Delay appearance slightly
