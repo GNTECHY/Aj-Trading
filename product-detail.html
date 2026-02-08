@@ -55,7 +55,6 @@
                     <div class="detail-code">Product Code: <span id="detail-code">---</span></div>
 
                     <div class="detail-price-box">
-                        <span id="detail-price" class="price">₹---</span>
                         <div class="rating"><i class="fas fa-star text-gold"></i> <span id="detail-rating">4.5</span>
                         </div>
                     </div>
@@ -149,7 +148,7 @@
                 document.getElementById('breadcrumb-title').innerText = product.category;
                 document.getElementById('detail-code').innerText = product.id.split('_')[1] ? `AJ-${product.id.split('_')[1].split('.')[0]}` : 'AJ-ITEM';
                 document.getElementById('detail-category').innerText = product.category;
-                document.getElementById('detail-price').innerText = `₹${product.price}`;
+                document.getElementById('detail-rating').innerText = product.rating;
                 document.getElementById('detail-rating').innerText = product.rating;
                 document.getElementById('enquire-btn').href = `contact.html?product=${encodeURIComponent(product.image)}`;
 

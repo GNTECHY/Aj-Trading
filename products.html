@@ -63,15 +63,7 @@
                         </div>
                     </div>
 
-                    <div class="filter-group">
-                        <div class="filter-title">Price Range</div>
-                        <input type="range" class="price-range" min="500" max="2000" step="100">
-                        <div
-                            style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #666; margin-top: 5px;">
-                            <span>₹500</span>
-                            <span>₹2000+</span>
-                        </div>
-                    </div>
+
 
                     <button id="clear-filters" class="btn-outline"
                         style="width: 100%; text-align: center; font-size: 0.9rem;">Clear Filters</button>
@@ -85,8 +77,6 @@
                         <div id="results-count" style="font-size: 0.9rem; color: #666;">Showing all products</div>
                         <select id="sort-select" class="sort-select">
                             <option value="default">Sort by: Default</option>
-                            <option value="price-low">Price: Low to High</option>
-                            <option value="price-high">Price: High to Low</option>
                         </select>
                     </div>
 
@@ -184,7 +174,6 @@
                             <div class="product-code" style="font-size: 0.8rem; color: #999;">${displayCode}</div>
                             <h3 class="product-title" style="font-size: 1rem; margin: 5px 0;">Premium ${product.category} Item</h3>
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: 600; color: var(--text-color);">₹${product.price}</span>
                                 <span style="color: #f1c40f;"><i class="fas fa-star"></i> ${product.rating}</span>
                             </div>
                             <!-- Updated: Links to Detail Page -->
