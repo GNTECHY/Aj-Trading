@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | AJ Trading</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="product-data.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">AJ <span>TRADING</span></a>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Detailed Product View -->
+    <section class="section-padding" style="background-color: var(--bg-light);">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div style="margin-bottom: 20px; font-size: 0.9rem; color: #666;">
+                <a href="index.html">Home</a> &gt; <a href="products.html">Products</a> &gt; <span
+                    id="breadcrumb-title">Product Detail</span>
+            </div>
+
+            <div class="product-detail-container">
+                <!-- Left: Image -->
+                <div class="product-detail-image fade-in-up">
+                    <img id="detail-image" src="" alt="Product Image">
+                </div>
+
+                <!-- Right: Info -->
+                <div class="product-detail-info fade-in-up" style="animation-delay: 0.2s;">
+                    <span id="detail-category" class="detail-tag">Category</span>
+                    <h1 id="detail-title">Loading Product...</h1>
+                    <div class="detail-code">Product Code: <span id="detail-code">---</span></div>
+
+                    <div class="detail-price-box">
+                        <span id="detail-price" class="price">₹---</span>
+                        <div class="rating"><i class="fas fa-star text-gold"></i> <span id="detail-rating">4.5</span>
+                        </div>
+                    </div>
+
+                    <p class="description">
+                        Elevate your corporate gifting with this premium quality product.
+                        Customizable with your company logo and available in various finishes.
+                        Perfect for employees, clients, and partners.
+                    </p>
+
+                    <ul class="detail-features">
+                        <li><i class="fas fa-check-circle text-gold"></i> Premium Material Finish</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> Custom Branding Available</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> Batch Orders Accepted</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> Eco-friendly Options</li>
+                    </ul>
+
+                    <div class="action-buttons">
+                        <a id="enquire-btn" href="#" class="btn" style="flex: 1; text-align: center;">Enquire Now</a>
+                        <a href="products.html" class="btn-outline" style="flex: 1; text-align: center;">Back to
+                            Catalog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 40px;">Related <span class="text-gold">Products</span></h2>
+            <div id="related-grid" class="product-grid"
+                style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <!-- Related items injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>AJ Trading</h4>
+                    <p style="color: #999; font-size: 0.9rem;">Premium corporate gifting solutions founded in 2025.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li>ajtrading2323@gmail.com</li>
+                        <li><a href="https://wa.me/919746577883" target="_blank" style="color: #999;"><i
+                                    class="fab fa-whatsapp" style="margin-right: 5px;"></i> +91 9746577883</a></li>
+                        <li>India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 AJ Trading. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id'); // This is the image filename
+
+            if (!productId || typeof products === 'undefined') {
+                document.getElementById('detail-title').innerText = "Product Not Found";
+                return;
+            }
+
+            // Find product object
+            const product = products.find(p => p.image === productId);
+
+            if (product) {
+                // Populate Details
+                document.getElementById('detail-image').src = `assets/products/${product.image}`;
+                document.getElementById('detail-title').innerText = `Premium ${product.category} Item`;
+                document.getElementById('breadcrumb-title').innerText = product.category;
+                document.getElementById('detail-code').innerText = product.id.split('_')[1] ? `AJ-${product.id.split('_')[1].split('.')[0]}` : 'AJ-ITEM';
+                document.getElementById('detail-category').innerText = product.category;
+                document.getElementById('detail-price').innerText = `₹${product.price}`;
+                document.getElementById('detail-rating').innerText = product.rating;
+                document.getElementById('enquire-btn').href = `contact.html?product=${encodeURIComponent(product.image)}`;
+
+                // Related Products (Same category, exclude current)
+                const related = products
+                    .filter(p => p.category === product.category && p.image !== product.image)
+                    .sort(() => 0.5 - Math.random()) // Shuffle
+                    .slice(0, 4); // Take 4
+
+                const relatedContainer = document.getElementById('related-grid');
+                related.forEach(p => {
+                    const code = p.id.split('_')[1] ? `AJ-${p.id.split('_')[1].split('.')[0]}` : 'AJ-ITEM';
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="product-image" style="background:white; padding:0; height: 250px; cursor: pointer;" onclick="window.location.href='product-detail.html?id=${encodeURIComponent(p.image)}'">
+                             <img src="assets/products/${p.image}" alt="Rel" style="width:100%; height:100%; object-fit: cover;">
+                        </div>
+                        <div class="product-content">
+                             <div class="product-code">${code}</div>
+                             <h4>${p.category}</h4>
+                             <a href="product-detail.html?id=${encodeURIComponent(p.image)}" class="btn-outline" style="width: 100%; text-align: center; padding: 5px;">View Details</a>
+                        </div>
+                     `;
+                    relatedContainer.appendChild(card);
+                });
+
+            } else {
+                document.getElementById('detail-title').innerText = "Product Not Found";
+            }
+        });
+    </script>
+</body>
+
+</html>

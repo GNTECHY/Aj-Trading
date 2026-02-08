@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | AJ Trading</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">AJ <span>TRADING</span></a>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i> &#9776;
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section-padding" style="background-color: var(--primary-color); color: white; text-align: center;">
+        <div class="container fade-in-up">
+            <h1>Get in <span class="text-gold">Touch</span></h1>
+            <p style="color: rgba(255,255,255,0.7);">We'd love to hear from you. Reach out for quotes and
+                collaborations.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding" style="background-color: var(--bg-light);">
+        <div class="container contact-container">
+
+            <!-- Contact Info -->
+            <div class="contact-info-box fade-in-up">
+                <h3 style="margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
+                    Contact Information</h3>
+
+                <div class="contact-info-item">
+                    <h4>Email Us</h4>
+                    <p><a href="mailto:ajtrading2323@gmail.com">ajtrading2323@gmail.com</a></p>
+                </div>
+
+                <div class="contact-info-item">
+                    <h4>Call Us</h4>
+                    <p><a href="https://wa.me/919746577883" target="_blank"><i class="fab fa-whatsapp"
+                                style="margin-right: 5px; color: #25D366;"></i> +91 9746577883</a></p>
+                </div>
+
+                <div class="contact-info-item">
+                    <h4>Location</h4>
+                    <p>India</p>
+                </div>
+
+                <div class="contact-info-item">
+                    <h4>Business Hours</h4>
+                    <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    <p>Sat: 10:00 AM - 2:00 PM</p>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+                        Founded in 2025, AJ Trading is dedicated to providing the best corporate gifting experience.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-box fade-in-up">
+                <h3 style="margin-bottom: 20px; color: var(--primary-color);">Send us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" placeholder="Your Company Ltd.">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required
+                            placeholder="Tell us about your requirements..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; border: none;">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>AJ Trading</h4>
+                    <p style="color: #999; font-size: 0.9rem;">Premium corporate gifting solutions founded in 2025.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li>ajtrading2323@gmail.com</li>
+                        <li><a href="https://wa.me/919746577883" target="_blank" style="color: #999;"><i
+                                    class="fab fa-whatsapp" style="margin-right: 5px;"></i> +91 9746577883</a></li>
+                        <li>India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 AJ Trading. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple client-side handling for the Product Enquiry redirect
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const product = urlParams.get('product');
+
+            if (product) {
+                const messageBox = document.getElementById('message');
+                if (messageBox) {
+                    messageBox.value = `I am interested in knowing more about product code: ${product}.`;
+                }
+            }
+
+            // Prevent actual submission for demo
+            document.getElementById('contactForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your enquiry! We will get back to you shortly.');
+            });
+        });
+    </script>
+</body>
+
+</html>
