@@ -143,7 +143,7 @@
 
             if (product) {
                 // Populate Details
-                document.getElementById('detail-image').src = `assets/products/${product.image}`;
+                document.getElementById('detail-image').src = getImagePath(product.image);
                 document.getElementById('detail-title').innerText = `Premium ${product.category} Item`;
                 document.getElementById('breadcrumb-title').innerText = product.category;
                 document.getElementById('detail-code').innerText = product.id.split('_')[1] ? `AJ-${product.id.split('_')[1].split('.')[0]}` : 'AJ-ITEM';
@@ -165,7 +165,9 @@
                     card.className = 'product-card';
                     card.innerHTML = `
                         <div class="product-image" style="background:white; padding:0; height: 250px; cursor: pointer;" onclick="window.location.href='product-detail.html?id=${encodeURIComponent(p.image)}'">
-                             <img src="assets/products/${p.image}" alt="Rel" style="width:100%; height:100%; object-fit: cover;">
+                        <div class="product-image" style="background:white; padding:0; height: 250px; cursor: pointer;" onclick="window.location.href='product-detail.html?id=${encodeURIComponent(p.image)}'">
+                             <img src="${getImagePath(p.image)}" alt="Rel" style="width:100%; height:100%; object-fit: cover;">
+                        </div>
                         </div>
                         <div class="product-content">
                              <div class="product-code">${code}</div>

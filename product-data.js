@@ -239,12 +239,32 @@ const rawImages = [
     "1770463427478-624cfd56-4357-473c-9048-7ea45549a1eb_99.jpg"
 ];
 
-// Assign random categories and prices for demonstration
+// Assign random categories for demonstration
 const categories = ["Tech", "Wellness", "Gourmet", "Office", "Travel"];
-const products = rawImages.map(img => ({
-    id: img,
-    image: img,
-    category: categories[Math.floor(Math.random() * categories.length)],
-    price: Math.floor(Math.random() * (2000 - 500 + 1)) + 500, // INR 500-2000
-    rating: (Math.random() * (5 - 3.5) + 3.5).toFixed(1)
-}));
+
+// Initialize products from LocalStorage or generate defaults
+let products = [];
+const storedProducts = localStorage.getItem('aj_products');
+
+if (storedProducts) {
+    products = JSON.parse(storedProducts);
+} else {
+    // Initial Generation
+    products = rawImages.map(img => ({
+        id: img,
+        image: img,
+        category: categories[Math.floor(Math.random() * categories.length)],
+        rating: (Math.random() * (5 - 3.5) + 3.5).toFixed(1)
+    }));
+    // Save to LocalStorage
+    localStorage.setItem('aj_products', JSON.stringify(products));
+
+    // Initialize Logs if empty
+    if (!localStorage.getItem('aj_logs')) {
+        localStorage.setItem('aj_logs', JSON.stringify([{
+            action: 'System Init',
+            details: 'Initialized default product list',
+            timestamp: new Date().toLocaleString()
+        }]));
+    }
+}

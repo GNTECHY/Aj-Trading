@@ -1,3 +1,12 @@
+// Helper to resolve image paths (Local vs Base64/URL)
+function getImagePath(imageName) {
+    if (!imageName) return 'https://via.placeholder.com/300';
+    if (imageName.startsWith('data:') || imageName.startsWith('http')) {
+        return imageName;
+    }
+    return `assets/products/${imageName}`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
@@ -32,16 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Floating WhatsApp Button Injection
-    const waBtn = document.createElement('a');
-    waBtn.href = "https://wa.me/919947932323";
-    waBtn.target = "_blank";
-    waBtn.className = "floating-wa-btn fade-in-up";
-    waBtn.style.animationDelay = "1s"; // Delay appearance slightly
-    waBtn.innerHTML = `
-        <i class="fab fa-whatsapp"></i>
-        <span>WhatsApp</span>
-        <span class="wave">👋</span>
-    `;
-    document.body.appendChild(waBtn);
+    // Floating WhatsApp Button Injection (Exclude Admin)
+    if (!window.location.pathname.includes('admin.html')) {
+        const waBtn = document.createElement('a');
+        waBtn.href = "https://wa.me/919947932323";
+        waBtn.target = "_blank";
+        waBtn.className = "floating-wa-btn fade-in-up";
+        waBtn.style.animationDelay = "1s"; // Delay appearance slightly
+        waBtn.innerHTML = `
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+            <span class="wave">👋</span>
+        `;
+        document.body.appendChild(waBtn);
+    }
 });
